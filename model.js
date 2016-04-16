@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 var config = Schema({
     name: String,
-    value: Object,
+    value: String,
     has: {type: Object, default: {}},
     allowed: {type: Object, default: {}}
 });
