@@ -1,4 +1,4 @@
-var log = require('logger')('config');
+var log = require('logger')('configs');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
@@ -21,4 +21,4 @@ config.virtual('id').get(function () {
     return this._id;
 });
 
-module.exports = mongoose.model('Config', config);
+module.exports = mongoose.model('Configs', config);

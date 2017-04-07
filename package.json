@@ -1,6 +1,6 @@
 {
-    "name": "config",
-    "description": "config",
+    "name": "configs",
+    "description": "configs",
     "version": "0.0.0",
     "author": {
         "name": "serandives",
@@ -12,6 +12,6 @@
     },
     "repository": {
         "type": "git",
-        "url": "git://github.com/serandules/config.git"
+        "url": "git://github.com/serandules/configs.git"
     }
 }
