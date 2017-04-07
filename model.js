@@ -1,4 +1,4 @@
-var log = require('logger')('configs-model');
+var log = require('logger')('model-configs');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
