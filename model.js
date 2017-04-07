@@ -21,4 +21,4 @@ config.virtual('id').get(function () {
     return this._id;
 });
 
-module.exports = mongoose.model('Configs', config);
+module.exports = mongoose.model('Config', config);
