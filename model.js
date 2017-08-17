@@ -2,11 +2,10 @@ var log = require('logger')('model-configs');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+var mongins = require('mongins');
 var types = require('validators').types;
 
 var config = Schema({
-    has: {type: Object, default: {}},
-    allowed: {type: Object, default: {}},
     name: {
         type: String,
         required: true,
@@ -21,6 +20,11 @@ var config = Schema({
         })
     }
 }, {collection: 'configs'});
+
+config.plugin(mongins);
+config.plugin(mongins.user);
+config.plugin(mongins.createdAt);
+config.plugin(mongins.updatedAt);
 
 config.set('toJSON', {
     getters: true,
