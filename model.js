@@ -26,17 +26,4 @@ config.plugin(mongins.user);
 config.plugin(mongins.createdAt);
 config.plugin(mongins.updatedAt);
 
-config.set('toJSON', {
-    getters: true,
-    //virtuals: false,
-    transform: function (doc, ret, options) {
-        delete ret._id;
-        delete ret.__v;
-    }
-});
-
-config.virtual('id').get(function () {
-    return this._id;
-});
-
 module.exports = mongoose.model('configs', config);
