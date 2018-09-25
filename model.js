@@ -23,7 +23,7 @@ var config = Schema({
 
 config.plugin(mongins);
 config.plugin(mongins.user);
-config.plugin(mongins.createdAt);
-config.plugin(mongins.updatedAt);
+config.plugin(mongins.createdAt());
+config.plugin(mongins.updatedAt());
 
 module.exports = mongoose.model('configs', config);
