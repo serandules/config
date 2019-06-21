@@ -8,7 +8,7 @@ var model = require('model');
 
 var types = validators.types;
 
-var config = Schema({
+var schema = Schema({
   name: {
     type: String,
     required: true,
@@ -25,17 +25,26 @@ var config = Schema({
   }
 }, {collection: 'configs'});
 
-config.plugin(mongins({
+schema.plugin(mongins({
   transform: function (o) {
     o.value = JSON.parse(o.value);
   }
 }));
-config.plugin(mongins.user);
-config.plugin(mongins.createdAt());
-config.plugin(mongins.updatedAt());
+schema.plugin(mongins.user);
+schema.plugin(mongins.permissions({
+  workflow: 'model'
+}));
+schema.plugin(mongins.status({
+  workflow: 'model'
+}));
+schema.plugin(mongins.visibility({
+  workflow: 'model'
+}));
+schema.plugin(mongins.createdAt());
+schema.plugin(mongins.updatedAt());
 
-model.ensureIndexes(config, [
+model.ensureIndexes(schema, [
   {name: 1, createdAt: 1, _id: 1}
 ]);
 
-module.exports = mongoose.model('configs', config);
+module.exports = mongoose.model('configs', schema);
