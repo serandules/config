@@ -12,6 +12,7 @@ var schema = Schema({
   name: {
     type: String,
     required: true,
+    unique: true,
     searchable: true,
     validator: types.name({
       length: 100
@@ -19,15 +20,20 @@ var schema = Schema({
   },
   value: {
     type: String,
-    validator: types.string({
-      length: 1000
+    required: true,
+    validator: types.json({
+      length: 10000
     })
   }
 }, {collection: 'configs'});
 
 schema.plugin(mongins({
   transform: function (o) {
-    o.value = JSON.parse(o.value);
+    try {
+      o.value = JSON.parse(o.value);
+    } catch (e) {
+      o.value = null;
+    }
   }
 }));
 schema.plugin(mongins.user);
