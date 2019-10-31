@@ -48,9 +48,10 @@ schema.plugin(mongins.visibility({
 }));
 schema.plugin(mongins.createdAt());
 schema.plugin(mongins.updatedAt());
+schema.plugin(mongins.modifiedAt());
 
 model.ensureIndexes(schema, [
-  {name: 1, createdAt: 1, _id: 1}
+  {name: 1, updatedAt: 1, _id: 1}
 ]);
 
 module.exports = mongoose.model('configs', schema);
